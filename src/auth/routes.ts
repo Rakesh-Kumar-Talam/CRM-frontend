@@ -120,7 +120,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
       };
       
       // Redirect to frontend with error
-      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+      const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
       const errorUrl = `${frontendUrl}/login?error=${encodeURIComponent(error as string)}&error_description=${encodeURIComponent(req.query.error_description as string || '')}`;
       
       return res.redirect(errorUrl);
@@ -129,7 +129,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
     // Verify state parameter for CSRF protection
     if (!state || !req.session?.oauthState || state !== req.session.oauthState) {
       console.error('Invalid state parameter in Google OAuth callback');
-      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+      const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
       const errorUrl = `${frontendUrl}/login?error=invalid_state&error_description=Invalid state parameter`;
       
       return res.redirect(errorUrl);
@@ -141,7 +141,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
     passport.authenticate('google', { session: false }, (err: any, user: any, info: any) => {
       if (err) {
         console.error('Google OAuth callback authentication error:', err);
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
         const errorUrl = `${frontendUrl}/login?error=authentication_failed&error_description=${encodeURIComponent(err.message)}`;
         
         return res.redirect(errorUrl);
@@ -149,7 +149,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
 
       if (!user) {
         console.error('Google OAuth callback - No user returned');
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
         const errorUrl = `${frontendUrl}/login?error=no_user&error_description=No user returned from Google OAuth`;
         
         return res.redirect(errorUrl);
@@ -167,7 +167,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
         console.log('Google OAuth callback - User authenticated successfully:', user.email);
 
         // Get redirect URL from session or use default
-        const redirectUrl = req.session?.redirectUrl || process.env.FRONTEND_URL || 'http://localhost:3000';
+        const redirectUrl = req.session?.redirectUrl || process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
         
         // Clear redirect URL from session
         if (req.session) {
@@ -180,7 +180,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
         return res.redirect(frontendUrl);
       } catch (tokenError) {
         console.error('Google OAuth callback - Token generation error:', tokenError);
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
         const errorUrl = `${frontendUrl}/login?error=token_generation_failed&error_description=Failed to generate authentication token`;
         
         return res.redirect(errorUrl);
@@ -188,7 +188,7 @@ router.get('/google/callback', (req: Request, res: Response) => {
     })(req, res);
   } catch (error) {
     console.error('Google OAuth callback error:', error);
-    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://crm-frontend.onrender.com';
     const errorUrl = `${frontendUrl}/login?error=callback_error&error_description=${encodeURIComponent(error instanceof Error ? error.message : 'Unknown error')}`;
     
     res.redirect(errorUrl);

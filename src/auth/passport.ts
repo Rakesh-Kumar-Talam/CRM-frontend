@@ -28,7 +28,7 @@ export const googleStrategy = new GoogleStrategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID || '',
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-    callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:4000/api/auth/google/callback',
+    callbackURL: process.env.GOOGLE_CALLBACK_URL || 'https://crm-backend-yn3q.onrender.com/api/auth/google/callback',
     passReqToCallback: true,
   },
   async (req: Request, accessToken: string, refreshToken: string, profile: GoogleOAuthProfile, done: Function) => {

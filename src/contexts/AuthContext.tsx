@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
   const loginWithGoogle = () => {
-    const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+    const backendUrl = process.env.REACT_APP_API_URL || 'https://crm-backend-yn3q.onrender.com/api';
     const redirectUrl = `${backendUrl}/auth/google?redirect=${encodeURIComponent(window.location.origin)}`;
     window.location.href = redirectUrl;
   };

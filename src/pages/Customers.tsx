@@ -211,7 +211,7 @@ const Customers: React.FC = () => {
     // Test backend connection and authentication
     const testBackendConnection = async () => {
       try {
-        const response = await fetch('http://localhost:4000/health');
+        const response = await fetch('https://crm-backend-yn3q.onrender.com/health');
         console.log('Backend health check:', response.status);
         
         // Check authentication status
@@ -226,7 +226,7 @@ const Customers: React.FC = () => {
         }
       } catch (error) {
         console.error('Backend connection failed:', error);
-        toast.error('Cannot connect to backend. Please ensure the backend is running on http://localhost:4000');
+        toast.error('Cannot connect to backend. Please ensure the backend is running on https://crm-backend-yn3q.onrender.com');
       }
     };
     

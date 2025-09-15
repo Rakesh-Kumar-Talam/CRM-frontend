@@ -43,7 +43,7 @@ import {
   CampaignSegmentBreakdown
 } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://crm-backend-yn3q.onrender.com/api';
 
 // Check if we're in development and no backend is available
 const isDevelopment = process.env.NODE_ENV === 'development';

@@ -64,7 +64,7 @@ const Campaigns: React.FC = () => {
     try {
       setLoading(true);
       console.log('Fetching all campaigns...');
-      console.log('API Base URL:', process.env.REACT_APP_API_URL || 'http://localhost:4000/api');
+      console.log('API Base URL:', process.env.REACT_APP_API_URL || 'https://crm-backend-yn3q.onrender.com/api');
       
       const response = await campaignApi.list();
       const campaignsData = response.data || [];
