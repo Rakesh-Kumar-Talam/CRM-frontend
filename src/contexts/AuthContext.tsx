@@ -57,10 +57,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const urlParams = new URLSearchParams(window.location.search);
     const tokenParam = urlParams.get('token');
     const userParam = urlParams.get('user');
+    const error = urlParams.get('error');
+    const errorDescription = urlParams.get('error_description');
     
-    if (tokenParam && userParam) {
+    if (error) {
+      console.error('OAuth Error:', errorDescription || error);
+      // Clean up URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname);
+    } else if (tokenParam && userParam) {
       try {
         const userData = JSON.parse(decodeURIComponent(userParam));
+        console.log('OAuth callback - User data:', userData);
+        
         setToken(tokenParam);
         setUser(userData);
         localStorage.setItem('authToken', tokenParam);
@@ -68,6 +76,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         
         // Clean up URL parameters
         window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // If we're on /dashboard, redirect to /
+        if (window.location.pathname === '/dashboard') {
+          window.location.href = '/';
+        }
       } catch (error) {
         console.error('Error handling Google OAuth callback:', error);
       }
