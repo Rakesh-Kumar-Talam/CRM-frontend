@@ -211,7 +211,9 @@ const Customers: React.FC = () => {
     // Test backend connection and authentication
     const testBackendConnection = async () => {
       try {
-        const response = await fetch('https://crm-backend-yn3q.onrender.com/health');
+        const backendUrl = process.env.REACT_APP_API_URL || 'https://crm-backend-yn3q.onrender.com/api';
+        const healthUrl = backendUrl.replace('/api', '/health');
+        const response = await fetch(healthUrl);
         console.log('Backend health check:', response.status);
         
         // Check authentication status
@@ -226,7 +228,8 @@ const Customers: React.FC = () => {
         }
       } catch (error) {
         console.error('Backend connection failed:', error);
-        toast.error('Cannot connect to backend. Please ensure the backend is running on https://crm-backend-yn3q.onrender.com');
+        const backendUrl = process.env.REACT_APP_API_URL || 'https://crm-backend-yn3q.onrender.com/api';
+        toast.error(`Cannot connect to backend. Please ensure the backend is running on ${backendUrl.replace('/api', '')}`);
       }
     };
     
