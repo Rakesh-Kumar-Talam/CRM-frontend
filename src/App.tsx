@@ -43,13 +43,16 @@ const AppRoutes: React.FC = () => {
         element={isAuthenticated ? <Navigate to="/" replace /> : <Login />} 
       />
       <Route
+        path="/dashboard"
+        element={<Navigate to="/" replace />}
+      />
+      <Route
         path="/*"
         element={
           <ProtectedRoute>
             <Layout>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/dashboard" element={<Navigate to="/" replace />} />
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/segments" element={<Segments />} />
