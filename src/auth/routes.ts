@@ -174,8 +174,8 @@ router.get('/google/callback', (req: Request, res: Response) => {
           delete req.session.redirectUrl;
         }
 
-        // Redirect to frontend with token - redirect to root (dashboard)
-        const frontendUrl = `${redirectUrl}?token=${token}&user=${encodeURIComponent(JSON.stringify(user))}`;
+        // Redirect to frontend with token - redirect to dashboard
+        const frontendUrl = `${redirectUrl}/dashboard?token=${token}&user=${encodeURIComponent(JSON.stringify(user))}`;
         
         return res.redirect(frontendUrl);
       } catch (tokenError) {
