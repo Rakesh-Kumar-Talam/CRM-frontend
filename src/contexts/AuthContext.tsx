@@ -76,11 +76,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         
         // Clean up URL parameters
         window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // If we're on /dashboard, redirect to /
-        if (window.location.pathname === '/dashboard') {
-          window.location.href = '/';
-        }
       } catch (error) {
         console.error('Error handling Google OAuth callback:', error);
       }
