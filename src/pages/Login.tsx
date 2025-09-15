@@ -30,10 +30,20 @@ const Login: React.FC = () => {
       window.history.replaceState({}, document.title, window.location.pathname);
     } else if (token && user) {
       try {
-        // const userData = JSON.parse(decodeURIComponent(user));
+        const userData = JSON.parse(decodeURIComponent(user));
+        console.log('OAuth callback - User data:', userData);
+        
+        // Store the token and user data
+        localStorage.setItem('authToken', token);
+        localStorage.setItem('user', JSON.stringify(userData));
+        
         toast.success('Successfully signed in with Google!');
+        
         // Clean up URL parameters
         window.history.replaceState({}, document.title, window.location.pathname);
+        
+        // Navigate to dashboard
+        navigate('/');
       } catch (error) {
         console.error('Error handling Google OAuth callback:', error);
         toast.error('Error processing OAuth callback');
