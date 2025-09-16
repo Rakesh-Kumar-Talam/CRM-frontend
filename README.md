@@ -7,6 +7,63 @@ A modern, AI-powered Customer Relationship Management (CRM) platform built with 
 - **Frontend**: [https://crm-frontend-xqgx.onrender.com](https://crm-frontend-xqgx.onrender.com)
 - **Backend API**: [https://crm-backend-yn3q.onrender.com](https://crm-backend-yn3q.onrender.com)
 
+## 🔗 Backend Implementation
+
+This frontend application is powered by a comprehensive Node.js backend system. For the complete backend implementation, API documentation, and deployment instructions, please refer to:
+
+**Backend Repository**: [https://github.com/Rakesh-Kumar-Talam/CRM-backend](https://github.com/Rakesh-Kumar-Talam/CRM-backend)
+
+### Backend Features
+- **Node.js & TypeScript** - Robust server-side implementation
+- **MongoDB Atlas** - Scalable database with Mongoose ODM
+- **Google OAuth 2.0** - Secure authentication system
+- **AI Integration** - Google Gemini AI for natural language processing
+- **Queue Processing** - BullMQ with Redis for background tasks
+- **Email Delivery** - Gmail API integration with SMTP fallback
+- **Comprehensive API** - RESTful endpoints with Swagger documentation
+
+## 🏗️ Full-Stack Architecture
+
+This CRM system consists of two main components:
+
+### Frontend (This Repository)
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Client-side routing** with React Router
+- **State management** with React Context
+- **API integration** with Axios
+
+### Backend ([CRM-backend](https://github.com/Rakesh-Kumar-Talam/CRM-backend))
+- **Node.js** with Express.js framework
+- **MongoDB Atlas** for data persistence
+- **Google OAuth 2.0** for authentication
+- **AI-powered features** with Google Gemini
+- **Queue-based processing** with BullMQ and Redis
+- **Email delivery** via Gmail API
+
+### Data Flow
+```
+Frontend (React) → API Calls → Backend (Node.js) → Database (MongoDB)
+                ← JSON Response ← Business Logic ← Data Processing
+```
+
+### API Integration
+The frontend communicates with the backend through RESTful APIs:
+
+#### Authentication Endpoints
+- `GET /api/auth/google` - Initiate Google OAuth
+- `GET /api/auth/google/callback` - OAuth callback handler
+- `POST /api/auth/verify` - Token verification
+
+#### Core API Endpoints
+- `GET /api/customers` - Customer management
+- `GET /api/orders` - Order processing
+- `GET /api/campaigns` - Campaign management
+- `GET /api/segments` - Customer segmentation
+- `GET /api/messages` - Messaging system
+
+For complete API documentation, visit the [Backend Repository](https://github.com/Rakesh-Kumar-Talam/CRM-backend).
+
 ## ✨ Features
 
 ### 🔐 Authentication & Security
@@ -116,7 +173,17 @@ src/
 ### Prerequisites
 - **Node.js** (v16 or higher)
 - **npm** or **yarn**
-- **Backend API** running (see backend repository)
+- **Backend API** running (see [Backend Repository](https://github.com/Rakesh-Kumar-Talam/CRM-backend))
+
+### Backend Requirements
+Before running the frontend, ensure the backend is properly configured:
+
+1. **MongoDB Atlas** - Database connection
+2. **Google Cloud Console** - OAuth and Gmail API setup
+3. **Redis Server** - For queue processing (optional)
+4. **Environment Variables** - Backend configuration
+
+For detailed backend setup instructions, visit: [CRM-backend Setup Guide](https://github.com/Rakesh-Kumar-Talam/CRM-backend#-local-setup-instructions)
 
 ### Installation
 
@@ -299,3 +366,4 @@ For support and questions:
 ---
 
 **Built with ❤️ using React, TypeScript, and Tailwind CSS**
+
